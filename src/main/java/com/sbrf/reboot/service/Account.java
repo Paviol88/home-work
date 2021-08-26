@@ -6,7 +6,5 @@ import lombok.AllArgsConstructor;
 public class Account {
     private String accnum;
 
-  /* public Account(String accnum) {
-        this.accnum = accnum;
-    }*/
+
 }
