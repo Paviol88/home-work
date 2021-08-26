@@ -1,14 +1,13 @@
 package com.sbrf.reboot.repository;
 
-import com.sbrf.reboot.dto.Account;
-import org.junit.jupiter.api.Assertions;
+import com.sbrf.reboot.service.Account;
+import com.sbrf.reboot.service.AccountRepository;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +17,7 @@ class AccountRepositoryImplTest {
 
 
     @Test
-    void onlyPersonalAccounts() throws FileNotFoundException {
+    void onlyPersonalAccounts() throws IOException {
         accountRepository = new AccountRepositoryImpl("src/main/resources/Accounts.txt");
         Set<Account> allAccountsByClientId = accountRepository.getAllAccountsByClientId(1);
         ArrayList<String> strings = new ArrayList<String>() {{
@@ -31,7 +30,7 @@ class AccountRepositoryImplTest {
     }
 
     @Test
-    void successGetAllAccountsByClientId() throws FileNotFoundException {
+    void successGetAllAccountsByClientId() throws IOException {
         accountRepository = new AccountRepositoryImpl("src/main/resources/Accounts.txt");
         Set<Account> allAccountsByClientId = accountRepository.getAllAccountsByClientId(1);
 
@@ -41,7 +40,7 @@ class AccountRepositoryImplTest {
     @Test
     void failGetAllAccountsByClientId() {
         accountRepository = new AccountRepositoryImpl("somePath");
-        assertThrows(FileNotFoundException.class, () -> {
+        assertThrows(NoSuchFileException.class, () -> {
             accountRepository.getAllAccountsByClientId(1L);
         });
     }
