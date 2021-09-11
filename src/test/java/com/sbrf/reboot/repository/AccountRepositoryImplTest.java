@@ -26,7 +26,7 @@ class AccountRepositoryImplTest {
             add("4-ACC1NUM");
         }};
 
-        allAccountsByClientId.forEach(e -> assertTrue(strings.contains(e.getNumber())));
+        allAccountsByClientId.forEach(e -> assertTrue(strings.contains(e.getAccnum())));
     }
 
     @Test
@@ -34,7 +34,7 @@ class AccountRepositoryImplTest {
         accountRepository = new AccountRepositoryImpl("src/main/resources/Accounts.txt");
         Set<Account> allAccountsByClientId = accountRepository.getAllAccountsByClientId(1);
 
-        assertEquals(1, (int) allAccountsByClientId.stream().filter(e -> e.getNumber().equals("4-ACC1NUM")).count());
+        assertEquals(1, (int) allAccountsByClientId.stream().filter(e -> e.getAccnum().equals("4-ACC1NUM")).count());
     }
 
     @Test

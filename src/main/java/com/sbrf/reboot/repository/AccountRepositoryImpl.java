@@ -35,7 +35,8 @@ public class AccountRepositoryImpl implements AccountRepository {
                 if (clientID.equals(Long.toString(id))) {
                     String nextString = strings.get(i + 1);
                     String accountNumber = nextString.substring(nextString.indexOf(":") + 1);
-                    accounts.add(new Account(accountNumber));
+                    accounts.add(Account.builder().accnum(accountNumber).build());
+
                 }
             }
         }

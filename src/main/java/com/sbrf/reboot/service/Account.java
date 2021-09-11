@@ -1,16 +1,17 @@
 package com.sbrf.reboot.service;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
-@AllArgsConstructor
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
+@Builder
+@Getter
 public class Account {
-    @Getter
     private String accnum;
-
-    public String getNumber() {
-        return accnum;
-    }
+    private long id;
+    private LocalDate createDate;
+    private BigDecimal balance;
 }
 
