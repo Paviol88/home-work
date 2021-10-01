@@ -13,5 +13,6 @@ public class Account {
     private long id;
     private LocalDate createDate;
     private BigDecimal balance;
+    private long clientId;
 }
 
